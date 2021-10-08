@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  server_db:
+    image: postgres
+    container_name: server_db
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+    networks:
+      - backend
+
+#  server:
+#    image: openjdk:11
+#    volumes:
+#      - ./server/target/server-1.0-SNAPSHOT.jar:/server.jar
+#    command: java -jar server.jar
+#    environment:
+#      - SERVER_DB_URL=jdbc:postgresql://server_db:5432/postgres
+#      - SERVER_DB_USER=postgres
+#      - SERVER_DB_PASSWORD=postgres
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - backend
+#    depends_on:
+#      - server_db
+
+networks:
+  backend:
