@@ -6,3 +6,12 @@ spring:
     driver-class-name: org.postgresql.Driver
   liquibase:
     change-log: "classpath:db/changelog/db.changelog-master.xml"
+
+keycloak:
+  realm: task_tracker
+  resource: task_tracker_app
+  auth-server-url: ${AUTH_SERVER}/auth
+  ssl-required: external
+  public-client: true
+  principal-attribute: preferred_username
+  bearer-only: true
